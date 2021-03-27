@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "glob": "^7.1.6"
+  },
+  "name": "game-randomizer",
+  "description": "Node.js module to enable game selection, randomization, and interactivity",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "devDependencies": {
+    "eslint": "^7.22.0"
+  },
+  "scripts": {
+    "start": "npm index.js",
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeMayer/game-randomizer.git"
+  },
+  "keywords": [
+    "bizhawk",
+    "node",
+    "randomizer"
+  ],
+  "author": "Mike Mayer",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/MikeMayer/game-randomizer/issues"
+  },
+  "homepage": "https://github.com/MikeMayer/game-randomizer#readme"
+}

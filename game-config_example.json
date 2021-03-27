@@ -1,0 +1,37 @@
+{
+    "emulators": [
+        {
+            "name": "Bizhawk",
+            "executable": "D:/Games/Emulation/BizHawk/EmuHawk.exe",
+            "commandLineOptions": "",
+            "consoleTags": ["snes", "nes", "gb", "n64", "genesis"]
+        }
+    ],
+    "consoles": [
+        {
+            "name": "Super Nintendo",
+            "romRoots": ["V:/Console/SNES/Roms/US/Retail Games/**/+(*.smc|*.sfc)"],
+            "tags": ["snes"]
+        },
+        {
+            "name": "Nintendo",
+            "romRoots": ["V:/Console/NES/Roms/**/*.nes"],
+            "tags": ["nes"]
+        },
+        {
+            "name": "Sega Genesis",
+            "romRoots": ["V:/Console/Genesis/Roms/US/Retail Games/**/+(*.bin|*.md)"],
+            "tags": ["genesis", "sega"]
+        },
+        {
+            "name": "Gameboy",
+            "romRoots": ["V:/Handheld/Game Boy/**/*.gb"],
+            "tags": ["gb"]
+        },
+        {
+            "name": "Nintendo 64",
+            "romRoots": ["V:/Console/Nintendo 64/Roms/**/+(*.n64|*.v64)"],
+            "tags": ["n64"]
+        }
+    ]
+}
