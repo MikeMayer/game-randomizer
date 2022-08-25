@@ -1,4 +1,4 @@
-const { glob } = require("glob")
+const { glob } = require('glob')
 const path = require('path')
 const child_process = require('child_process')
 
@@ -41,11 +41,13 @@ class Console {
     /**
      * @param {String} name
      * @param {String[]} romRoots
+     * @param {String} core
      * @param {String[]} tags
      */
-    constructor(name, romRoots, tags) {
+    constructor(name, romRoots, core, tags) {
         this.name = name
         this.romRoots = romRoots
+        this.core = core
         this.tags = tags
         this.gamePaths = new Set()
     }
@@ -96,7 +98,7 @@ class Configuration {
     static fromString(config) {
         const configurationObject = JSON.parse(config)
         var emulators = configurationObject.emulators.map(t => new Emulator(t.name, t.executable, t.commandLineOptions, t.consoleTags))
-        var consoles = configurationObject.consoles.map(t => new Console(t.name, t.romRoots, t.tags))
+        var consoles = configurationObject.consoles.map(t => new Console(t.name, t.romRoots, t.core, t.tags))
 
         return new Configuration(emulators, consoles)
     }
