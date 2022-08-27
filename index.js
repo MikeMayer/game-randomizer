@@ -3,6 +3,11 @@ const { Configuration } = require('./model/configuration.js')
 const { random, intersection } = require('./utility.js')
 
 class RandomGameResult {
+    /**
+     * @param {import("./model/console.js").Console} console
+     * @param {import("./model/emulator.js").Emulator} emulator
+     * @param {import("./model/game.js").Game} game
+     */
     constructor(console, emulator, game) {
         this.console = console
         this.emulator = emulator
@@ -11,6 +16,9 @@ class RandomGameResult {
 }
 
 class GameRandomizerOptions {
+    /**
+     * @param {string} [consoleTag]
+     */
     constructor(consoleTag) {
         this.consoleTag = consoleTag
     }
@@ -56,7 +64,7 @@ class GameRandomizer {
         const game = random(gameConsole.games)
         const emulators = this.emulators.filter(emulator => intersection(emulator.consoleTags, gameConsole.tags).size > 0)
 
-        if (!emulators.length) {
+        if (!emulators.length || !game) {
             return
         }
 
@@ -79,12 +87,13 @@ if (process.env.RUN_GAME_RANDOMIZER_AT_LAUNCH) {
                 return
             }
 
-            randomPick.emulator.run(randomPick.game)
+            randomPick.emulator.run(randomPick.console, randomPick.game)
         })
     })
 }
 
 module.exports = {
+    RandomGameResult,
     GameRandomizer,
     GameRandomizerOptions
 }

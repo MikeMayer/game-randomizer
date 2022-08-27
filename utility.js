@@ -9,7 +9,7 @@ const random = array => array[Math.floor(Math.random() * array.length)]
 /**
  * x ∪ y
  */
-const union = (x, y) => [...new Set([...x, ...y])]
+const union = (/** @type {any} */ x, /** @type {any} */ y) => [...new Set([...x, ...y])]
 
 /**
  * x ∩ y

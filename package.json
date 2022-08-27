@@ -4,7 +4,7 @@
   },
   "name": "game-randomizer",
   "description": "Node.js module to enable game selection, randomization, and interactivity",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "main": "index.js",
   "type": "commonjs",
   "devDependencies": {
