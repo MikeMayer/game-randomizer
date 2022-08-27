@@ -1,18 +1,19 @@
 const { GameRandomizer, GameRandomizerOptions } = require('../index')
 const { describe, it } = require('mocha')
 const assert = require('assert')
-const { Console, Emulator } = require('../model/configuration')
+const { Console } = require('../model/console')
+const { Emulator } = require('../model/emulator')
 
 const buildTestHarnessRandomizer = () => {
     const gameRandomizer = new GameRandomizer()
 
     gameRandomizer.consoles = [
-        new Console('A', [], ['a']),
-        new Console('B', [], ['b']),
-        new Console('C', [], ['c']),
-        new Console('D', [], ['d']),
-        new Console('E', [], ['e']),
-        new Console('F', [], ['f'])
+        new Console('A', [], '', ['a']),
+        new Console('B', [], '', ['b']),
+        new Console('C', [], '', ['c']),
+        new Console('D', [], '', ['d']),
+        new Console('E', [], '', ['e']),
+        new Console('F', [], '', ['f'])
     ]
 
     gameRandomizer.consoles.forEach(console => {
@@ -39,6 +40,7 @@ describe('GameRandomizer#pickRandomGame()', () => {
 
     it('picks a game, one console', async () => {
         const gameRandomizer = buildTestHarnessRandomizer()
+        // @ts-ignore
         gameRandomizer.consoles = [gameRandomizer.consoles.pop()]
 
         assert(gameRandomizer.consoles.length === 1)

@@ -17,7 +17,10 @@ class GameRandomizerOptions {
 }
 
 class GameRandomizer {
-    constructor(config = new Configuration()) {
+    /**
+     * @param {Configuration} [config]
+     */
+    constructor(config = new Configuration([],[])) {
         this.config = config
     }
 
@@ -42,7 +45,7 @@ class GameRandomizer {
     /**
      * @param {GameRandomizerOptions} options
      */
-    async pickRandomGame(options) {
+    async pickRandomGame(options = new GameRandomizerOptions()) {
         var consoles = this.consoles
 
         if (options && options.consoleTag) {
@@ -71,7 +74,11 @@ if (process.env.RUN_GAME_RANDOMIZER_AT_LAUNCH) {
     const randomizer = new GameRandomizer()
 
     randomizer.scanForGames().then(() => {
-        randomizer.pickRandomGame().then(randomPick => {
+        randomizer.pickRandomGame(new GameRandomizerOptions()).then(randomPick => {
+            if (!randomPick) {
+                return
+            }
+
             randomPick.emulator.run(randomPick.game)
         })
     })
