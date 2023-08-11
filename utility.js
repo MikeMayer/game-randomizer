@@ -1,20 +1,20 @@
-const crypto = require('crypto')
-const fs = require('fs')
+import { createHash } from 'crypto'
+import { createReadStream } from 'fs'
 
 /**
  * @param {Array<any>} array
  */
-const random = array => array[Math.floor(Math.random() * array.length)]
+export const random = array => array[Math.floor(Math.random() * array.length)]
 
 /**
  * x ∪ y
  */
-const union = (/** @type {any} */ x, /** @type {any} */ y) => [...new Set([...x, ...y])]
+export const union = (/** @type {any} */ x, /** @type {any} */ y) => [...new Set([...x, ...y])]
 
 /**
  * x ∩ y
  */
-const intersection = (x, y) => {
+export const intersection = (x, y) => {
     if (x instanceof Array) { x = new Set(x) }
     if (y instanceof Array) { y = new Set(y) }
 
@@ -27,8 +27,8 @@ const intersection = (x, y) => {
  */
 const checksum = async (path, hashAlgorithm = 'sha1') => {
     return new Promise((resolve, reject) => {
-        const hash = crypto.createHash(hashAlgorithm)
-        const input = fs.createReadStream(path)
+        const hash = createHash(hashAlgorithm)
+        const input = createReadStream(path)
 
         input.on('error', reject)
         input.on('data', chunk => { hash.update(chunk) })
@@ -36,7 +36,7 @@ const checksum = async (path, hashAlgorithm = 'sha1') => {
     })
 }
 
-module.exports = {
+export default {
     random,
     union,
     intersection,

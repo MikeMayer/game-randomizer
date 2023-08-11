@@ -1,8 +1,8 @@
-const fs = require('fs/promises')
-const { Configuration } = require('./model/configuration.js')
-const { random, intersection } = require('./utility.js')
+import { readFile } from 'fs/promises'
+import { Configuration } from './model/configuration.js'
+import { random, intersection } from './utility.js'
 
-class RandomGameResult {
+export class RandomGameResult {
     /**
      * @param {import("./model/console.js").Console} console
      * @param {import("./model/emulator.js").Emulator} emulator
@@ -15,7 +15,7 @@ class RandomGameResult {
     }
 }
 
-class GameRandomizerOptions {
+export class GameRandomizerOptions {
     /**
      * @param {string} [consoleTag]
      */
@@ -24,7 +24,7 @@ class GameRandomizerOptions {
     }
 }
 
-class GameRandomizer {
+export class GameRandomizer {
     /**
      * @param {Configuration} [config]
      */
@@ -38,7 +38,7 @@ class GameRandomizer {
     set emulators(value) { this.config.emulators = value }
 
     async scanForGames() {
-        const configFile = (await fs.readFile('game-config.json')).toString('utf8')
+        const configFile = (await readFile('game-config.json')).toString('utf8')
         this.config = Configuration.fromString(configFile)
 
         var scanPromises = []
@@ -92,7 +92,7 @@ if (process.env.RUN_GAME_RANDOMIZER_AT_LAUNCH) {
     })
 }
 
-module.exports = {
+export default {
     RandomGameResult,
     GameRandomizer,
     GameRandomizerOptions

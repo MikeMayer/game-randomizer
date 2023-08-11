@@ -1,7 +1,7 @@
-const glob = require('glob')
-const { Game } = require('./game')
+import glob from 'glob'
+import { Game } from './game.js'
 
-class Console {
+export class Console {
     /**
      * @param {String} name
      * @param {String[]} romRoots
@@ -46,6 +46,6 @@ class Console {
     }
 }
 
-module.exports = {
+export default {
     Console
 }

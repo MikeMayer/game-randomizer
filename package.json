@@ -1,15 +1,15 @@
 {
+  "name": "game-randomizer",
+  "description": "Node.js module to enable game selection, randomization, and interactivity",
+  "version": "1.0.5",
+  "main": "index.js",
+  "type": "module",
   "dependencies": {
     "glob": "^7.1.6"
   },
-  "name": "game-randomizer",
-  "description": "Node.js module to enable game selection, randomization, and interactivity",
-  "version": "1.0.4",
-  "main": "index.js",
-  "type": "commonjs",
   "devDependencies": {
     "eslint": "^7.22.0",
-    "mocha": "^8.3.2"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "start": "npm index.js",

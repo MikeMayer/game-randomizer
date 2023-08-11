@@ -1,6 +1,6 @@
-const path = require('path')
+import { basename, extname  } from 'path'
 
-class Game {
+export class Game {
     /**
      * @param {String} fileName Absolute path to rom
      */
@@ -8,11 +8,7 @@ class Game {
         this.fileName = fileName
     }
 
-    get name() { return path.basename(this.fileName, path.extname(this.fileName)) }
+    get name() { return basename(this.fileName, extname(this.fileName)) }
 
     toString() { return this.name }
-}
-
-module.exports = {
-    Game
 }

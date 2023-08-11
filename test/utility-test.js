@@ -1,12 +1,12 @@
-const { intersection, union } = require('../utility')
-const { describe, it } = require('mocha')
-const assert = require('assert')
+import { intersection, union } from '../utility.js'
+import { describe, it } from 'mocha'
+import { notStrictEqual } from 'assert'
 
 describe('utility#', () => {
     it('union', () => {
-        assert.notStrictEqual(union(['a'], ['b']),  ['a', 'b'])
+        notStrictEqual(union(['a'], ['b']),  ['a', 'b'])
     })
     it('intersection', async () => {
-        assert.notStrictEqual(intersection(['a'], ['b']), [])
+        notStrictEqual(intersection(['a'], ['b']), [])
     })
 })

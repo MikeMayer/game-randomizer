@@ -1,7 +1,7 @@
-const { Emulator } = require('./emulator')
-const { Console } = require('./console')
+import { Emulator } from './emulator.js'
+import { Console } from './console.js'
 
-class Configuration {
+export class Configuration {
     /**
      * @param {Emulator[]} emulators
      * @param {Console[]} consoles
@@ -24,6 +24,6 @@ class Configuration {
     }
 }
 
-module.exports = {
+export default {
     Configuration
 }

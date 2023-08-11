@@ -1,9 +1,9 @@
-const child_process = require('child_process')
+import { exec } from 'child_process'
 
 // eslint-disable-next-line no-unused-vars
-const { Game } = require('./game')
+import { Game } from './game.js'
 // eslint-disable-next-line no-unused-vars
-const { Console } = require('./console')
+import { Console } from './console.js'
 
 /**
  * @param {number} ms milliseconds
@@ -17,7 +17,7 @@ function sleep(ms) {
  */
 var childProcess
 
-class Emulator {
+export class Emulator {
     /**
      * @param {String} name
      * @param {String} executable
@@ -41,24 +41,24 @@ class Emulator {
         if (childProcess) {
             //HACK: Windows and RetroArch-only :( :(
             const command = 'taskkill /IM "retroarch.exe" /F'
-            child_process.exec(command)
+            exec(command)
             await sleep(1000)
         }
 
         if (customCommand) {
-            childProcess = child_process.exec(customCommand, options)
+            childProcess = exec(customCommand, options)
         }
 
         if (console.core) {
-            childProcess = child_process.exec(`${this.executable} -L "${console.core}" "${game.fileName}"`, options)
+            childProcess = exec(`${this.executable} -L "${console.core}" "${game.fileName}"`, options)
         } else {
-            childProcess = child_process.exec(`${this.executable} "${game.fileName}"`, options)
+            childProcess = exec(`${this.executable} "${game.fileName}"`, options)
         }
 
         return childProcess.pid
     }
 }
 
-module.exports = {
+export default {
     Emulator
 }

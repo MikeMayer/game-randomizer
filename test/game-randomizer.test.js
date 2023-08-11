@@ -1,8 +1,8 @@
-const { GameRandomizer, GameRandomizerOptions } = require('../index')
-const { describe, it } = require('mocha')
-const assert = require('assert')
-const { Console } = require('../model/console')
-const { Emulator } = require('../model/emulator')
+import { GameRandomizer, GameRandomizerOptions } from '../index.js'
+import { describe, it } from 'mocha'
+import assert from 'assert'
+import { Console } from '../model/console.js'
+import { Emulator } from '../model/emulator.js'
 
 const buildTestHarnessRandomizer = () => {
     const gameRandomizer = new GameRandomizer()
