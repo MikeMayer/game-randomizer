@@ -37,8 +37,8 @@ export class GameRandomizer {
     get emulators() { return this.config.emulators }
     set emulators(value) { this.config.emulators = value }
 
-    async scanForGames() {
-        const configFile = (await readFile('game-config.json')).toString('utf8')
+    async scanForGames(configFilePath = 'game-config.json') {
+        const configFile = (await readFile(configFilePath)).toString('utf8')
         this.config = Configuration.fromString(configFile)
 
         var scanPromises = []
