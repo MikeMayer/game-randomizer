@@ -1,4 +1,4 @@
-import glob from 'glob'
+import { glob } from 'glob'
 import { Game } from './game.js'
 
 export class Console {
@@ -28,16 +28,14 @@ export class Console {
                 glob(root, {
                     absolute: true,
                     nodir: true
-                }, (error, files) => {
-                    if (error) {
-                        reject(error)
-                    } else {
-                        // @ts-ignore
-                        resolve(files ?? [])
-                        files.forEach(path => this.gamePaths.add(path))
+                }).then(files => {
+                    // @ts-ignore
+                    resolve(files ?? [])
+                    files.forEach(path => this.gamePaths.add(path))
 
-                        console.debug(`${files.length} ${this.name} games found`)
-                    }
+                    console.debug(`${files.length} ${this.name} games found`)
+                }).catch(error => {
+                    reject(error)
                 })
             }))
         }
