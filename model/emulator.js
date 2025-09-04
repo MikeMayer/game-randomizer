@@ -5,6 +5,7 @@ import { Game } from './game.js'
 // eslint-disable-next-line no-unused-vars
 import { Console } from './console.js'
 
+
 /**
  * @param {number} ms milliseconds
  */
@@ -13,7 +14,7 @@ function sleep(ms) {
 }
 
 /**
- * @type child_process.ChildProcess
+ * @type {import('child_process').ChildProcess}
  */
 var childProcess
 
@@ -32,11 +33,11 @@ export class Emulator {
     }
 
     /**
-     * @param {Console} console
+     * @param {Console} gameConsole
      * @param {Game} game
      * @param {String} customCommand
      */
-    async run(console, game, customCommand) {
+    async run(gameConsole, game, customCommand) {
         const options = {}
         if (childProcess && process.platform === 'win32') {
             //HACK: Windows and RetroArch-only :( :(
@@ -59,8 +60,8 @@ export class Emulator {
             childProcess = exec(customCommand, options)
         }
 
-        if (console.commandLineOptions) {
-            const allOptions = [this.commandLineOptions, console.commandLineOptions].filter(opt => opt && opt.trim()).join(' ')
+        if (gameConsole.commandLineOptions) {
+            const allOptions = [this.commandLineOptions, gameConsole.commandLineOptions].filter(opt => opt && opt.trim()).join(' ')
             const command = `${this.executable} ${allOptions} "${game.fileName}"`
             childProcess = exec(command, options)
         } else {

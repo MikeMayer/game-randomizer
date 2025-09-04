@@ -14,7 +14,7 @@ export const union = (/** @type {any} */ x, /** @type {any} */ y) => [...new Set
 /**
  * x ∩ y
  */
-export const intersection = (x, y) => {
+export const intersection = (/** @type {any} */ x, /** @type {any} */ y) => {
     if (x instanceof Array) { x = new Set(x) }
     if (y instanceof Array) { y = new Set(y) }
 

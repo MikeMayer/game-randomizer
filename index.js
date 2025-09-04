@@ -87,7 +87,7 @@ if (process.env.RUN_GAME_RANDOMIZER_AT_LAUNCH) {
                 return
             }
 
-            randomPick.emulator.run(randomPick.console, randomPick.game)
+            randomPick.emulator.run(randomPick.console, randomPick.game, '')
         })
     })
 }
