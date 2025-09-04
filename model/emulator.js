@@ -55,7 +55,7 @@ export class Emulator {
             }
         }
 
-        if (customCommand && childProcess) {
+        if (customCommand) {
             childProcess = exec(customCommand, options)
         }
 
