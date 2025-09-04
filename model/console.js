@@ -5,13 +5,13 @@ export class Console {
     /**
      * @param {String} name
      * @param {String[]} romRoots
-     * @param {String} core
+     * @param {String} commandLineOptions
      * @param {String[]} tags
      */
-    constructor(name, romRoots, core, tags) {
+    constructor(name, romRoots, commandLineOptions, tags) {
         this.name = name
         this.romRoots = romRoots
-        this.core = core
+        this.commandLineOptions = commandLineOptions
         this.tags = tags
         this.gamePaths = new Set()
     }

@@ -49,8 +49,10 @@ export class Emulator {
             childProcess = exec(customCommand, options)
         }
 
-        if (console.core) {
-            childProcess = exec(`${this.executable} -L "${console.core}" "${game.fileName}"`, options)
+        if (console.commandLineOptions) {
+            const allOptions = [this.commandLineOptions, console.commandLineOptions].filter(opt => opt && opt.trim()).join(' ')
+            const command = `${this.executable} ${allOptions} "${game.fileName}"`
+            childProcess = exec(command, options)
         } else {
             childProcess = exec(`${this.executable} "${game.fileName}"`, options)
         }
