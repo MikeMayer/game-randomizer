@@ -37,15 +37,25 @@ export class Emulator {
      * @param {String} customCommand
      */
     async run(console, game, customCommand) {
-        const options =  { }
-        if (childProcess) {
+        const options = {}
+        if (childProcess && process.platform === 'win32') {
             //HACK: Windows and RetroArch-only :( :(
-            const command = 'taskkill /IM "retroarch.exe" /F'
-            exec(command)
-            await sleep(1000)
+
+            const commands = ['taskkill /IM "retroarch.exe" /F', 'taskkill /IM "RALibretro.exe" /F']
+
+            for (const command of commands) {
+                exec(command, (error, stdout, stderr) => {
+                    sleep(1000)
+
+                    if (error) {
+                        console.error(`exec error: ${error}`);
+                        return
+                    }
+                })
+            }
         }
 
-        if (customCommand) {
+        if (customCommand && childProcess) {
             childProcess = exec(customCommand, options)
         }
 

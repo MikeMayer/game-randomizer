@@ -1,6 +1,12 @@
 {
     "emulators": [
         {
+            "name": "RALibretro",
+            "executable": "D:/Games/Emulation/RALibretro/RALibretro.exe",
+            "commandLineOptions": "",
+            "consoleTags": ["nes", "snes", "genesis", "gb", "n64"]
+        },
+        {
             "name": "Bizhawk",
             "executable": "D:/Games/Emulation/BizHawk/EmuHawk.exe",
             "commandLineOptions": "",
@@ -10,27 +16,32 @@
     "consoles": [
         {
             "name": "Super Nintendo",
-            "romRoots": ["V:/Console/SNES/Roms/US/Retail Games/**/+(*.smc|*.sfc)"],
+            "romRoots": ["V:/Console/SNES/Roms/US/Retail Games/**/*.+(smc|sfc)"],
+            "commandLineOptions": "--core snes9x_libretro --system 3 --game",
             "tags": ["snes"]
         },
         {
             "name": "Nintendo",
             "romRoots": ["V:/Console/NES/Roms/**/*.nes"],
+            "commandLineOptions": "--core nestopia_libretro --system 7 --game",
             "tags": ["nes"]
         },
         {
             "name": "Sega Genesis",
-            "romRoots": ["V:/Console/Genesis/Roms/US/Retail Games/**/+(*.bin|*.md)"],
+            "romRoots": ["V:/Console/Genesis/Roms/US/Retail Games/**/*.+(bin|md)"],
+            "commandLineOptions": "--core genesis_plus_gx_libretro --system 1 --game",
             "tags": ["genesis", "sega"]
         },
         {
             "name": "Gameboy",
             "romRoots": ["V:/Handheld/Game Boy/**/*.gb"],
+            "commandLineOptions": "--core gambatte_libretro --system 4 --game",
             "tags": ["gb"]
         },
         {
             "name": "Nintendo 64",
-            "romRoots": ["V:/Console/Nintendo 64/Roms/**/+(*.n64|*.v64)"],
+            "romRoots": ["V:/Console/Nintendo 64/Roms/**/*.+(n64|v64)"],
+            "commandLineOptions": "--core mupen64plus_next_libretro --system 2 --game",
             "tags": ["n64"]
         }
     ]
